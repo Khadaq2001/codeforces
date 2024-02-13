@@ -10,28 +10,28 @@ int main()
     ll h = 0;
     cin >> n;
     vector<ll> arr(n);
+    vector<vector <ll>> dp(n,vector<ll>(n, 0));
     for (int i = 0; i < n; i++)
     {
         scanf("%lld", &arr[i]);
     }
-    for (int i = 0; i < n; i++)
+    ll k = 0;
+    if (arr[0]>0){
+        k++;
+        dp[0][0]=arr[0];
+    }
+    for (int i = 1; i < n; i++)
     {
-        if (arr[i] > 0)
+        if (dp[i-1][k-1] + arr[i] >0)
         {
-            total++;
-            h += arr[i];
-        }
-        else
+            dp[i][k] = dp[i-1][k-1] + arr[i];
+            dp[i][k-1] =
+        } 
+        else 
         {
-            if (h + arr[i] >= 0)
-            {
-                total++;
-                h += arr[i];
-            }
-            else
-                continue;
+            
         }
     }
-    cout << total << endl;
+    
     return 0;
 }
