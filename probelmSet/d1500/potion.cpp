@@ -1,37 +1,30 @@
 #include <iostream>
 #include <vector>
+#include <queue> 
 
 using namespace std;
 typedef long long ll;
 
 int main()
 {
-    ll n, total = 0;
-    ll h = 0;
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    int n;
     cin >> n;
-    vector<ll> arr(n);
-    vector<vector <ll>> dp(n,vector<ll>(n, 0));
-    for (int i = 0; i < n; i++)
-    {
-        scanf("%lld", &arr[i]);
-    }
-    ll k = 0;
-    if (arr[0]>0){
-        k++;
-        dp[0][0]=arr[0];
-    }
-    for (int i = 1; i < n; i++)
-    {
-        if (dp[i-1][k-1] + arr[i] >0)
-        {
-            dp[i][k] = dp[i-1][k-1] + arr[i];
-            dp[i][k-1] =
-        } 
-        else 
-        {
-            
+    priority_queue<ll, vector <ll>, greater<ll>> pq; // smallest element first 
+    ll S = 0;
+    for (int i =0; i < n; i++){
+        ll x;
+        cin >> x;
+        S +=x;
+        pq.push(x);
+        while (S<0){
+            S -= pq.top();
+            pq.pop();
         }
     }
-    
+    cout << (int) pq.size() << endl;
+
     return 0;
-}
+
+} 
