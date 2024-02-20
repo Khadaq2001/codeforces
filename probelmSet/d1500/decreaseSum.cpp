@@ -1,6 +1,6 @@
 #include <iostream> 
 #include <vector>
-
+#include <cmath>
 using namespace std;
 typedef long long ll; 
 ll t, n, s;
@@ -20,18 +20,20 @@ int main(){
         int res = digSum(n);
         if (res < s){
             cout << 0 << endl;
-            return 0;
+            continue;
         }
         ll out = 0;
-        ll tmp = n; 
+        ll tmp =n;
+        ll tmp2 = tmp;
+        int dig;
         int count = 0;
         while (res > s){
-        int dig = tmp % 10;
-        tmp /= 10;
-        out += (10 - dig) * 10^(count++); 
-        n += out;
-        res = digSum(n);
+        dig = tmp / ll(pow(10, count)) % 10;
+        out += (10 - dig)%10 * ll(pow(10, count++)); 
+        tmp = n + out;
+        res = digSum(tmp);
         }
         cout << out << endl;
     }
+    return 0;
 }
