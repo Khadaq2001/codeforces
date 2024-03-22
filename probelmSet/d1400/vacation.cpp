@@ -5,23 +5,33 @@ using namespace std;
 
 int n;
 
-int solution (vector<int> &a)
+int solution(int n)
 {
-    int preStatus = 0;
-    for (int i = 0; i<n ; i++)
+    vector<int> a(n);
+    for (int &i : a)
+        cin >> i;
+
+    vector<vector<int>> dp(n, vector<int>(3, 0)); // store the maxium working days
+    dp[0][1] = 1;
+    dp[0][2] = 1;
+    for (int i = 1; i < n; i++)
     {
-        int status = 0;
-        if(a[i] == 1 && preStatus != 1)
-            ; 
-        
+        int tmp = max(dp[i - 1][0], dp[i - 1][1]);
+        dp[i][0] = max(tmp, dp[i - 1][2]);
+        if (a[i] == 1 || a[i] == 3)
+            dp[i][1] = max(dp[i - 1][0] + 1, dp[i - 1][2] + 1);
+        if (a[i] == 2 || a[i] == 3)
+            dp[i][2] = max(dp[i - 1][0] + 1, dp[i - 1][1] + 1);
     }
+    int tmp = max(dp[n-1][0], dp[n-1][1]);
+    int maxWorkDay = max(tmp, dp[n-1][2]);
+    return n - maxWorkDay;
 }
 
-int main(){
+int main()
+{
     cin >> n;
-    vector<int> a(n);
-    for (int &day : a)
-        cin >> day;
-    int ans = solution(a);
+    int ans = solution(n);
     cout << ans << endl;
+    return 0;
 }
