@@ -12,8 +12,15 @@ int solution(int n)
         cin >> i;
 
     vector<vector<int>> dp(n, vector<int>(3, 0)); // store the maxium working days
-    dp[0][1] = 1;
-    dp[0][2] = 1;
+    if (a[0] == 1)
+        dp[0][1] = 1;
+    if (a[0] == 2)
+        dp[0][2] = 1;
+    if (a[0] == 3)
+    {
+        dp[0][1] = 1;
+        dp[0][2] = 1;
+    }
     for (int i = 1; i < n; i++)
     {
         int tmp = max(dp[i - 1][0], dp[i - 1][1]);
@@ -23,8 +30,8 @@ int solution(int n)
         if (a[i] == 2 || a[i] == 3)
             dp[i][2] = max(dp[i - 1][0] + 1, dp[i - 1][1] + 1);
     }
-    int tmp = max(dp[n-1][0], dp[n-1][1]);
-    int maxWorkDay = max(tmp, dp[n-1][2]);
+    int tmp = max(dp[n - 1][0], dp[n - 1][1]);
+    int maxWorkDay = max(tmp, dp[n - 1][2]);
     return n - maxWorkDay;
 }
 
