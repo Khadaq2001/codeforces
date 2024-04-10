@@ -1,20 +1,27 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+typedef long long ll;
 
 int n;
-int binSearch(std::vector<std::pair<int, int>> list, num){
-    
-}
 
-int solution(int n){
-    std::vector<int> a(n);
-    int ans = 0;
-    for (int& i : a)
+ll solution(ll n){
+    std::vector<ll> a(n);
+    ll ans = 0;
+    for (ll& i : a)
         std::cin >> i;
-    int b;
+    ll b;
     for(int i=0;i<n;i++){
         std::cin >> b;
         a[i] -= b;
+    }
+    std::sort(a.begin(), a.end());
+    for (int j=0; j<n; j++)
+    {
+        if (a[j] <= 0)
+           continue;
+        int i = std::lower_bound(a.begin(), a.end(), -a[j]+1) - a.begin();
+        ans += j - i;
     }
     
     
@@ -23,7 +30,7 @@ int solution(int n){
 }
 int main(){
     std::cin >> n;
-    int ans = solution(n);
+    ll ans = solution(n);
     std::cout << ans << std::endl;
     return 0;
 }
