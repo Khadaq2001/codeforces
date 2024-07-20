@@ -21,14 +21,7 @@ const char *solve() {
     int diff = 0;
     vector<int> map(MAX, 0);
     for (int i=0; i<n; i++){
-        if (a[i] == b[i]){
-            map[a[i]] = 1;
-            continue;
-        }
-        else {
-            diff ++;
-            
-        }
+
         
     }
     return "YES";
