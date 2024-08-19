@@ -36,6 +36,7 @@ const char *solve() {
         return "YES";
     return "NO";
 }
+
 int main() {
     int t;
     cin >> t;

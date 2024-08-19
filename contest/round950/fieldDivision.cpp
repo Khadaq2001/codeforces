@@ -1,7 +1,7 @@
 #include <iostream>
-#include <vector> 
+#include <vector>
 #include <algorithm>
-using namespace std; 
+using namespace std;
 
 
 void solve(){
@@ -11,7 +11,6 @@ void solve(){
     for (int i=0; i<k; i++){
          cin >> loc[i].second >> loc[i].first; // revert x and y for sorting convince;
     }
-    sort (loc.begin(), loc.end());
     int a = 0;
     int currentX=0, currentY=0;
     for (auto &i : loc){
@@ -20,11 +19,9 @@ void solve(){
         a += i.first ;
         currentY = i.first;
         currentX = i.second;
-        
     }
-    
-    
 }
+
 int main(){
     int t;
     cin >> t;
@@ -33,4 +30,3 @@ int main(){
     }
     return 0;
 }
-
