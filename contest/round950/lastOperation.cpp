@@ -20,17 +20,9 @@ const char *solve() {
     for (int &i : d) {
         cin >> i;
     }
-<<<<<<< HEAD
     int diff = 0;
     vector<int> map(MAX, 0);
     for (int i=0; i<n; i++){
-
-        
-=======
-    for (int i = 0; i < n; i++) {
-        if (a[i] != b[i])
-            stoNum[b[i]] ++;
->>>>>>> 1aa9b031632aeeccca56ee1a2c55a5695938b827
     }
     for (int i = 0; i < m; i++) {
         if (stoNum.find(d[i]) != stoNum.end() && stoNum[d[i]] > 0)
