@@ -1,8 +1,8 @@
 def solve():
     n = int(input())
     a = [0]
-    for i in map(int, input().split()):
-        a.append(a[-1]+i)
+    for x in input().split():
+        a.append(a[-1] + int(x))
     s = input()
     ans = 0
     l = 0
@@ -23,5 +23,5 @@ def main():
     for _ in range(t):
         solve()
 
-
-main()
+if __name__ == '__main__':
+    main()
